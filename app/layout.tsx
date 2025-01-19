@@ -1,19 +1,23 @@
-// app/layout.tsx
-import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
-import { ReactNode } from 'react'
+import './globals.css'
+import Header from '@/components/Header'
 
 export const metadata = {
-  title: 'Enlightment Foods',
+  title: 'Enlightment Foods Cost System',
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col bg-gray-50">
-        {/* Wrap entire app in ClerkProvider */}
+      <body className="min-h-screen flex flex-col bg-white">
         <ClerkProvider>
-          {children}
+          {/* The global header on every page */}
+          <Header />
+          <main className="flex-1 bg-gray-50">{children}</main>
         </ClerkProvider>
       </body>
     </html>
