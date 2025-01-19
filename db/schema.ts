@@ -5,7 +5,6 @@ import {
     real,
     date,
     text,
-    boolean,
     // etc. if needed
   } from 'drizzle-orm/pg-core'
   
@@ -56,3 +55,16 @@ import {
     efficiency: real('efficiency').notNull(),
   })
   
+  export const dailyProduction = pgTable('daily_production', {
+    id: serial('id').primaryKey(),
+    date: date('date').notNull(),
+    milk_cost: real('milk_cost').notNull(),
+    gas_cost: real('gas_cost').notNull(),
+    staff_cost: real('staff_cost').notNull(),
+    electricity_cost: real('electricity_cost').notNull(),
+    total_cost: real('total_cost').notNull(),
+    output_weight: real('output_weight').notNull(),
+    cost_per_kg: real('cost_per_kg').notNull(),
+    total_milk_volume: real('total_milk_volume').notNull(),
+    total_production_output: real('total_production_output').notNull(),
+  })
