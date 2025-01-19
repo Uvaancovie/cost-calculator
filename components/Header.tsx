@@ -24,7 +24,7 @@ export default function Header() {
           Production Costs
         </Link>
 
-        <Link href="/cost-calculator" className="text-green-800 hover:text-green-600">
+        <Link href="/sales-dashboard" className="text-green-800 hover:text-green-600">
           Sales Dashboard
         </Link>
         
