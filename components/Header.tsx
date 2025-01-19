@@ -23,6 +23,10 @@ export default function Header() {
         <Link href="/cost-calculator" className="text-green-800 hover:text-green-600">
           Production Costs
         </Link>
+
+        <Link href="/cost-calculator" className="text-green-800 hover:text-green-600">
+          Sales Dashboard
+        </Link>
         
         {/* Clerk user button includes sign in/out */}
         <UserButton afterSignOutUrl="/" />
