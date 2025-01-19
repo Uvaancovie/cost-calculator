@@ -1,0 +1,257 @@
+{
+  "id": "c4174d9b-59b5-43e3-b359-f9f8848539ba",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.Costs": {
+      "name": "Costs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "milk_cost_per_liter": {
+          "name": "milk_cost_per_liter",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "gas_cost_per_unit": {
+          "name": "gas_cost_per_unit",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "electricity_cost_per_kwh": {
+          "name": "electricity_cost_per_kwh",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "staff_wage_per_hour": {
+          "name": "staff_wage_per_hour",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "electricity_vat": {
+          "name": "electricity_vat",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Equipment": {
+      "name": "Equipment",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "equipment_name": {
+          "name": "equipment_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "production_volume": {
+          "name": "production_volume",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_time": {
+          "name": "start_time",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_time": {
+          "name": "end_time",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total_time": {
+          "name": "total_time",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "efficiency": {
+          "name": "efficiency",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Inputs": {
+      "name": "Inputs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "volume_of_milk": {
+          "name": "volume_of_milk",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "gas_usage": {
+          "name": "gas_usage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "electricity_usage": {
+          "name": "electricity_usage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "staff_count": {
+          "name": "staff_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "staff_hours": {
+          "name": "staff_hours",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Outputs": {
+      "name": "Outputs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total_milk_cost": {
+          "name": "total_milk_cost",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total_gas_cost": {
+          "name": "total_gas_cost",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total_staff_cost": {
+          "name": "total_staff_cost",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total_electricity_cost": {
+          "name": "total_electricity_cost",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total_production_cost": {
+          "name": "total_production_cost",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "output_weight": {
+          "name": "output_weight",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cost_per_kg": {
+          "name": "cost_per_kg",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
