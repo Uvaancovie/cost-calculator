@@ -5,7 +5,7 @@ import {
     real,
     date,
     text,
-    varchar,
+    
     // etc. if needed
   } from 'drizzle-orm/pg-core'
   
@@ -71,9 +71,3 @@ import {
   })
 
 
-  export const users = pgTable("users", {
-    id: serial("id").primaryKey(),
-    email: varchar("email", 255).notNull().unique(),
-    password: text("password").notNull(),
-    name: varchar("name", 255),
-  });
