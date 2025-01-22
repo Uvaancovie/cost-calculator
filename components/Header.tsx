@@ -69,7 +69,7 @@ export default function Header() {
               Inputs
             </Link>
             <Link
-              href="/data-table"
+              href="/outputs"
               className="text-green-800 hover:text-green-600"
               onClick={() => setMobileMenuOpen(false)}
             >

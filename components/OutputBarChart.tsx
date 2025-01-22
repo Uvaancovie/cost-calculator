@@ -109,7 +109,7 @@ export function OutputsBarChart({ limit }: OutputsBarChartProps) {
           ) : (
             <TrendingDown className="mr-1 h-4 w-4 text-green-500" />
           )}
-          <span className={`text-sm font-medium ${costPerKgChange > 0 ? "text-red-500" : "text-green-500"}`}>
+          <span className={`text-sm font-medium R{costPerKgChange > 0 ? "text-red-500" : "text-green-500"}`}>
             {Math.abs(costPerKgChange).toFixed(2)}%
           </span>
         </div>
