@@ -11,7 +11,7 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: 'Enlightment Foods Cost System',
+  title: 'Everlast Insurance Brokers',
 }
 
 export default function RootLayout({
