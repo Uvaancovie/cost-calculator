@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts"
+import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 // Define Schema for Form Validation
 const formSchema = z.object({
@@ -16,41 +16,41 @@ const formSchema = z.object({
   monthlyPremium: z.string().min(1, { message: "Monthly premium is required" }).transform(Number),
   durationMonths: z.string().min(1, { message: "Duration in months is required" }).transform(Number),
   projectedGrowth: z.string().min(1, { message: "Projected growth (%) is required" }).transform(Number),
-})
+});
 
-export type InsuranceCalculatorFormValues = z.infer<typeof formSchema>
+export type InsuranceCalculatorFormValues = z.infer<typeof formSchema>;
 
 interface InsuranceCalculatorFormProps {
-  onCalculate: (values: InsuranceCalculatorFormValues) => void
+  onCalculate: (values: InsuranceCalculatorFormValues) => void;
 }
 
 export function InsuranceCalculatorForm({ onCalculate }: InsuranceCalculatorFormProps) {
-  const [growthData, setGrowthData] = useState<{ year: number; value: number }[]>([])
+  const [growthData, setGrowthData] = useState<{ year: number; value: number }[]>([]);
 
   const form = useForm<InsuranceCalculatorFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      insuredAmount: 10000,
-      monthlyPremium: 200,
-      durationMonths: 60,
-      projectedGrowth: 5,
+      insuredAmount: undefined, // No default values
+      monthlyPremium: undefined,
+      durationMonths: undefined,
+      projectedGrowth: undefined,
     },
-  })
+  });
 
   function onSubmit(values: InsuranceCalculatorFormValues) {
-    onCalculate(values)
-    
+    onCalculate(values);
+
     // Calculate Projected Growth Over 5 Years
-    const annualGrowthRate = values.projectedGrowth / 100
-    let projectedAmount = values.insuredAmount
-    const chartData = []
+    const annualGrowthRate = values.projectedGrowth / 100;
+    let projectedAmount = values.insuredAmount;
+    const chartData = [];
 
     for (let year = 1; year <= 5; year++) {
-      projectedAmount += (projectedAmount * annualGrowthRate) + (values.monthlyPremium * 12)
-      chartData.push({ year, value: projectedAmount })
+      projectedAmount += projectedAmount * annualGrowthRate + values.monthlyPremium * 12;
+      chartData.push({ year, value: projectedAmount });
     }
 
-    setGrowthData(chartData)
+    setGrowthData(chartData);
   }
 
   return (
@@ -69,7 +69,7 @@ export function InsuranceCalculatorForm({ onCalculate }: InsuranceCalculatorForm
                 <FormItem>
                   <FormLabel>Insured Amount ($)</FormLabel>
                   <FormControl>
-                    <Input type="number" step="100" {...field} />
+                    <Input type="number" step="100" placeholder="Enter insured amount" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -82,7 +82,7 @@ export function InsuranceCalculatorForm({ onCalculate }: InsuranceCalculatorForm
                 <FormItem>
                   <FormLabel>Monthly Premium ($)</FormLabel>
                   <FormControl>
-                    <Input type="number" step="10" {...field} />
+                    <Input type="number" step="10" placeholder="Enter monthly premium" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -95,7 +95,7 @@ export function InsuranceCalculatorForm({ onCalculate }: InsuranceCalculatorForm
                 <FormItem>
                   <FormLabel>Duration (Months)</FormLabel>
                   <FormControl>
-                    <Input type="number" step="1" {...field} />
+                    <Input type="number" step="1" placeholder="Enter duration in months" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -108,7 +108,7 @@ export function InsuranceCalculatorForm({ onCalculate }: InsuranceCalculatorForm
                 <FormItem>
                   <FormLabel>Projected Growth (%)</FormLabel>
                   <FormControl>
-                    <Input type="number" step="0.1" {...field} />
+                    <Input type="number" step="0.1" placeholder="Enter projected growth rate" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -141,5 +141,5 @@ export function InsuranceCalculatorForm({ onCalculate }: InsuranceCalculatorForm
         </Card>
       )}
     </Form>
-  )
+  );
 }

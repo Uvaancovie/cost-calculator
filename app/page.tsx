@@ -5,40 +5,7 @@ import { PhoneIcon, MailIcon, MapPinIcon } from "lucide-react"
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-blue-50">
-      <header className="bg-blue-800 text-white p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Everlast Insurance Broker</h1>
-          <nav>
-            <ul className="flex space-x-4">
-              <li>
-                <a href="#" className="hover:text-blue-200">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-200">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-200">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-200">
-                  Contact Us
-                </a>
-              </li>
-              <li>
-                <a href="/cost-calculator" className="hover:text-blue-200">
-                  Cost Calculator
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+     
 
       <main>
         <section className="bg-blue-700 text-white py-20">

@@ -1,8 +1,9 @@
 // app/layout.tsx
 import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
-
+import Header from '@/components/Header'
 import { Poppins } from 'next/font/google'
+
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -25,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontClass}>
       <body className="min-h-screen flex flex-col bg-white">
+
+       
         <ClerkProvider>
-          
+        <Header></Header>
           <main className="flex-1 bg-gray-50">{children}</main>
         </ClerkProvider>
       </body>

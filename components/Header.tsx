@@ -1,55 +1,52 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { UserButton } from "@clerk/nextjs"
-// You can use any icon library, e.g., lucide-react for a Menu icon:
-import { Menu } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+
 
 export default function Header() {
-  // Mobile menu open/closed state
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white border-b border-gray-200">
-      {/* Main header row */}
+    <header className="w-full bg-white border-b border-gray-200 shadow">
       <div className="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
-          <Link href="/">
-            <span className="font-semibold text-lg text-green-800">
-              Enlightment Foods
-            </span>
-          </Link>
-        </div>
+        <Link href="/" className="text-xl font-bold text-blue-800">
+          Everlast Insurance
+        </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center space-x-4">
-          <Link href="/inputs" className="text-green-800 hover:text-green-600">
-            Inputs
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          <Link href="/" className="text-blue-800 hover:text-blue-600">
+            Home
           </Link>
-          <Link href="/data-table" className="text-green-800 hover:text-green-600">
-            Outputs
+          <Link href="/about" className="text-blue-800 hover:text-blue-600">
+            About Us
           </Link>
-          <Link href="/cost-calculator" className="text-green-800 hover:text-green-600">
-            Production Costs
+          <Link href="/services" className="text-blue-800 hover:text-blue-600">
+            Services
           </Link>
-          <Link href="/sales-dashboard" className="text-green-800 hover:text-green-600">
-            Sales Dashboard
+          <Link href="/cost-calculator" className="text-blue-800 hover:text-blue-600">
+            Cost Calculator
           </Link>
-          <Link href="/production-analysis" className="text-green-800 hover:text-green-600">
-            Analysis
+          <Link href="/contact" className="text-blue-800 hover:text-blue-600">
+            Contact
           </Link>
-          <Link href="/data-table" className="text-green-800 hover:text-green-600">
-            Tables
-          </Link>
-
-          <UserButton afterSignOutUrl="/" />
         </nav>
 
-        {/* Hamburger button (mobile only) */}
+        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-green-800 hover:text-green-600"
+          className="md:hidden text-blue-800 hover:text-blue-600"
           onClick={() => setMobileMenuOpen((prev) => !prev)}
           aria-label="Toggle mobile menu"
         >
@@ -57,60 +54,60 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile dropdown menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-white">
-          <nav className="flex flex-col space-y-2 p-4">
+      {/* Mobile Menu using Dialog */}
+      <Dialog open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+        <DialogTrigger asChild>
+          {/* Hidden button trigger for accessibility */}
+          <VisuallyHidden>
+            <Button>Open Menu</Button>
+          </VisuallyHidden>
+        </DialogTrigger>
+        <DialogContent className="max-w-sm bg-white p-6 rounded-lg shadow-lg">
+          <DialogTitle>Navigation</DialogTitle>
+          <nav className="flex flex-col space-y-4">
             <Link
-              href="/inputs"
-              className="text-green-800 hover:text-green-600"
+              href="/"
+              className="text-blue-800 hover:text-blue-600"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Inputs
+              Home
             </Link>
             <Link
-              href="/outputs"
-              className="text-green-800 hover:text-green-600"
+              href="/about"
+              className="text-blue-800 hover:text-blue-600"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Outputs
+              About Us
+            </Link>
+            <Link
+              href="/services"
+              className="text-blue-800 hover:text-blue-600"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Services
             </Link>
             <Link
               href="/cost-calculator"
-              className="text-green-800 hover:text-green-600"
+              className="text-blue-800 hover:text-blue-600"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Production Costs
+              Cost Calculator
             </Link>
             <Link
-              href="/sales-dashboard"
-              className="text-green-800 hover:text-green-600"
+              href="/contact"
+              className="text-blue-800 hover:text-blue-600"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Sales Dashboard
+              Contact
             </Link>
-            <Link
-              href="/production-analysis"
-              className="text-green-800 hover:text-green-600"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Analysis
-            </Link>
-            <Link
-              href="/data-table"
-              className="text-green-800 hover:text-green-600"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Tables
-            </Link>
-
-            <div>
-              {/* If you want to keep the sign-out button accessible on mobile */}
-              <UserButton afterSignOutUrl="/" />
-            </div>
           </nav>
-        </div>
-      )}
+          <DialogClose asChild>
+            <Button variant="secondary" className="mt-4">
+              Close Menu
+            </Button>
+          </DialogClose>
+        </DialogContent>
+      </Dialog>
     </header>
-  )
+  );
 }
